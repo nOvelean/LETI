@@ -1,45 +1,45 @@
 #include <stdio.h>
-#include <math.h>
-//#include <stdlib.h>
-#include <string.h>
-int atoi(char string[]){
-    int result = 0;
-    for (int i = 0; i < strlen(string);i++){
-        result += pow(10, strlen(string) - i - 1) * (string[i] - '0');
-    }
-    return result;
-}
 int main(){
-    printf("%d\n",atoi("123"));
-    int n;
+    int n,k;
     printf("Welcome, enter count of strings:");
     scanf("%d",&n);
+    printf("enter count of even numbers: ");
+    scanf("%d",&k);
     int array[n][10];
-    char enterString[20];
-    int lenString;
-    char delim[] = " ";
+    int lenString = 1;
+    int j = 0;
     for (int i = 0; i < n;i++){
-        scanf("%s", enterString);
-        printf("%s", enterString);
-        char * split_enterString = strtok(enterString, delim);
-        printf("work, string %d\n", i + 1);
-        int j = 0;
-        while (split_enterString != NULL){
-            array[i][j] = atoi(split_enterString);
-            printf("%d", array[i][j]);
+        printf("Enter string value: ");
+        j = 0;
+        lenString = 1;
+        scanf("%d",&array[i][j]);
+        while (array[i][j] >= 0){
             j ++;
-            split_enterString = strtok(NULL, delim);
-            printf("%s\n", split_enterString);
-            lenString = strlen(split_enterString);
-            printf("%d",array[i][j]);
+            lenString ++;
+            scanf("%d",&array[i][j]);
         }
     }
-    printf("\n Array:");
+    printf("retArray: ");
+    for (int j = 0; j < lenString; j++){
+        int count = 0;
+        for (int i = 0; i < n; i++){
+            if (array[i][j] % 2 == 0){
+                count ++;
+            } 
+        }
+        if (count == k){
+            printf("\n_________");
+            for (int i = 0; i < n; i++){
+                printf("%d ", array[i][j]);
+            }
+        }
+    }
+    printf("\nArray:");
     for (int i = 0; i < n; i++){
+        printf("\n______");
         for (int j = 0; j <lenString; j++){
             printf("%d ", array[i][j]);
         }
-        printf("\n");
     }
     return 0;
 }
