@@ -6,16 +6,14 @@ int main(){
     printf("enter count of even numbers: ");
     scanf("%d",&k);
     int array[n][10];
-    int lenString = 1;
-    int j = 0;
+    int lenString = 0;
     for (int i = 0; i < n;i++){
         printf("Enter string value: ");
-        j = 0;
-        lenString = 1;
+        int j = 0;
         scanf("%d",&array[i][j]);
-        while (array[i][j] >= 0){
+        while ((array[i][j] >= 0 && i == 0) || (j < lenString && i != 0)){
             j ++;
-            lenString ++;
+            if (i == 0){lenString ++;}
             scanf("%d",&array[i][j]);
         }
     }
